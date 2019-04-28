@@ -33,7 +33,7 @@ def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
 
 def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     """
-    If @first and @second has same type should return True
+    If @first and @second is the same object should return True
     In another case should return False
     """
     return id(first) == id(second)
@@ -54,15 +54,13 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    c=0
+
     if (type(first_value) == int) and (type(second_value) == int):
         c = int(first_value) * int(second_value)
     if type(first_value) != int:
         raise ValueError
-        #            c = int(first_value) * int(second_value)
     if type(second_value) != int:
         raise ValueError
-        #           c = int(first_value) * int(second_value)
     return  c
 
 
@@ -94,13 +92,12 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
         except ValueError:
             print("Not valid input data")
         >>> "Not valid input data"
-    """
-    try:
-        a = int(first_value)*int(second_value)
+   """
 
-    except  ValueError:
-        print("Not valid input data")
-    return a
+    try:
+        return int(first_value)*int(second_value)
+    except ValueError:
+        raise OurAwesomeException
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -117,32 +114,25 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> True
         is_word_in_text("Glad", "Nice to meet you ")
         >>> False
+     """
 
-    """
-    i = 0
-    c = 0
-    b = int(len(text))
-    for i in range(b):
-        if word[0:len(word)] == text[i:(i + len(word))]:
-            c += 1
-        if word[0:len(word)] != text[i:(i + len(word))]:
-            pass
-        i += 1
-    if c>0:
-        return True
+    if word in text:
+       return True
     else:
-        return False
+       return False
+
 def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
     i = 0
     a = []
-    while i < 13:
-        a = a + [i]
-        i += 1
-    a.remove(a[6])
-    a.remove(a[6])
+    for i in range(13) :
+        if i == 6  or i ==7 :
+            i += 1
+        else:
+            a = a + [i]
+            i += 1
     return a
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
@@ -154,17 +144,14 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    i=0
-    while i < (len(data) + 1):
-        if i == len(data):
-            break
-        if data[i] < 0:
-            data.remove(data[i])
-            i = i - 1
+    i = 0
+    a = []
+    for i in range(len(data)):
+        if data[i] >= 0:
+            a.append(data[i])
         else:
             pass
-        i += 1
-    return data
+    return a
 
 
 def alphabet() -> dict:
@@ -175,12 +162,10 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    alphabet = {}
-    j = 1
-    for i in string.ascii_lowercase:
-        alphabet[j] = i
-        j += 1
-    return alphabet
+    a=('a','b','c', 'd', 'e', 'f', 'g', 'h',  'i',  'j', 'k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z')
+    b=(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27)
+    c=dict(zip(b,a))
+    return c
 
 
 def simple_sort(data: List[int]) -> List[list]:
@@ -190,9 +175,7 @@ def simple_sort(data: List[int]) -> List[list]:
         simple_sort([2, 9, 6, 7, 3, 2, 1])
         >>> [1, 2, 2, 3, 6, 7, 9]
     Returns:
-
     """
-    #data = [2, 4, 3, 6, 5, 7, 4, 9]
     i = 0
     while i < (len(data) - 1):
         j = 0
