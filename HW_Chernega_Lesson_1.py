@@ -19,8 +19,6 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     return first == second
 
 
-
-
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     """
     If @first and @second has same type should return True
@@ -29,15 +27,12 @@ def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     return type(first) == type(second)
 
 
-
-
 def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     """
     If @first and @second is the same object should return True
     In another case should return False
     """
     return id(first) == id(second)
-
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -61,9 +56,7 @@ def multiple_ints(first_value: int, second_value: int) -> int:
         raise ValueError
     if type(second_value) != int:
         raise ValueError
-    return  c
-
-
+    return c
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -95,7 +88,7 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
    """
 
     try:
-        return int(first_value)*int(second_value)
+        return int(first_value) * int(second_value)
     except ValueError:
         raise OurAwesomeException
 
@@ -116,10 +109,7 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
      """
 
-    if word in text:
-       return True
-    else:
-       return False
+    return word in text
 
 def some_loop_exercise() -> list:
     """
@@ -127,13 +117,13 @@ def some_loop_exercise() -> list:
     """
     i = 0
     a = []
-    for i in range(13) :
-        if i == 6  or i ==7 :
-            i += 1
+    for i in range(13):
+        if i != 6 and i != 7:
+            a.append(i)
         else:
-            a = a + [i]
-            i += 1
+            pass
     return a
+
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
     """
@@ -162,10 +152,10 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    a=('a','b','c', 'd', 'e', 'f', 'g', 'h',  'i',  'j', 'k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z')
-    b=(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27)
-    c=dict(zip(b,a))
-    return c
+    a = []
+    for i in enumerate(string.ascii_lowercase, start=1):
+        a.append(i)
+    return dict(a)
 
 
 def simple_sort(data: List[int]) -> List[list]:
@@ -176,14 +166,11 @@ def simple_sort(data: List[int]) -> List[list]:
         >>> [1, 2, 2, 3, 6, 7, 9]
     Returns:
     """
-    i = 0
-    while i < (len(data) - 1):
+    for i in range(len(data) - 1):
         j = 0
-        while j < (len(data) - 1 - i):
+        for j in range(len(data) - 1 - i):
             if data[j] > data[j + 1]:
                 data[j], data[j + 1] = data[j + 1], data[j]
             j += 1
         i += 1
     return data
-
-
