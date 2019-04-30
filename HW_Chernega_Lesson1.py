@@ -152,10 +152,9 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    a = []
-    for i in enumerate(string.ascii_lowercase, start=1):
-        a.append(i)
-    return dict(a)
+
+    return dict(enumerate(string.ascii_lowercase,start=1))
+
 
 
 def simple_sort(data: List[int]) -> List[list]:
@@ -167,10 +166,8 @@ def simple_sort(data: List[int]) -> List[list]:
     Returns:
     """
     for i in range(len(data) - 1):
-        j = 0
+
         for j in range(len(data) - 1 - i):
             if data[j] > data[j + 1]:
                 data[j], data[j + 1] = data[j + 1], data[j]
-            j += 1
-        i += 1
     return data
