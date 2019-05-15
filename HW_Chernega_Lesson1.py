@@ -11,12 +11,12 @@ class OurAwesomeException(Exception):
     pass
 
 
-def is_two_object_has_same_value(first: Any, second: Any) -> bool:
+#def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     """
     If @first and @second has same value should return True
     In another case should return False
     """
-    return first == second
+#    return first == second
 
 
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
